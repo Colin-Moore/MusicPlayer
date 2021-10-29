@@ -1,0 +1,55 @@
+﻿<Window x:Class="Assignment04.Playlists"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment04"
+        mc:Ignorable="d"
+        Title="Playlists" WindowState="Maximized"
+        MinHeight="600" MinWidth="1300">
+    <Window.Background>
+        <ImageBrush ImageSource="https://cdmbucket1.s3.ca-central-1.amazonaws.com/background.jpg"></ImageBrush>
+    </Window.Background>
+
+    <Grid Background="LightSlateGray" Opacity="0.8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Playlist Name" Grid.Column="0" TextBlock.Foreground="white" HorizontalAlignment="Center" Margin="0 25 0 0" FontWeight="Bold"/>
+        <ListBox Name="lbxPlaylistName" SelectionMode="Single" BorderBrush="DarkGray" BorderThickness="3" Grid.Row="1" Grid.Column="0" Margin="0 5 0 10" Height="auto">
+        </ListBox>
+        <Button Name="btnNewPlaylist" ToolTip="Create a new playlist" HorizontalAlignment="Center" Margin="0 0 0 0" Grid.Row="3" Height="40" Width="120">Make a new Playlist</Button>
+        <Button Name="btnSavePlaylist" ToolTip="Save playlist to hard drive" HorizontalAlignment="Center" Margin="0 90 0 0" Grid.Row="3" Height="40" Width="120" >Save Playlist</Button>
+        <Button Name="btnAddNew" ToolTip="Add new song from hard drive" HorizontalAlignment="Center" Margin="0 0 0 90" Grid.Row="3" Height="40" Width="120" >Add New Song</Button>
+        <Label Content="Playlist Songs" Grid.Column="1" TextBlock.Foreground="white" HorizontalAlignment="Center" Margin="0 25 0 0" FontWeight="Bold"/>
+        <DataGrid Name="dgPlaylistSongs" BorderBrush="DarkGray" BorderThickness="3" AutoGenerateColumns="False" SelectionMode="Extended" ItemsSource="{Binding }" Grid.Row="1" Grid.Column="1" Margin="0 5 10 10" Width="auto" MaxWidth="1300">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" IsReadOnly="True" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Artist" IsReadOnly="True"  Binding="{Binding Artist}"/>
+                <DataGridTextColumn Header="Album" IsReadOnly="True"  Binding="{Binding Album}"/>
+                <DataGridTextColumn Header="Genre" IsReadOnly="True"  Binding="{Binding Genre}"/>
+                <DataGridTextColumn Header="Filename" IsReadOnly="True"  Binding="{Binding Filename}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="btnAddToPlaylist" ToolTip="Add selected song from library to playlist" Grid.Column="1" Grid.Row="2" Width="100" Height="40" HorizontalAlignment="Left" Margin="20 0 0 0">Add to Playlist</Button>
+        <Button Name="btnRemoveFromPlaylist" ToolTip="Remove selected song from playlist" Grid.Column="1" Grid.Row="2" Width="125" Height="40" HorizontalAlignment="Left" Margin="125 0 0 0">Remove from Playlist</Button>
+        <Label Grid.Row="2" Content="Library"  TextBlock.Foreground="white" Grid.Column="1" Height="25" VerticalAlignment="Bottom"  HorizontalAlignment="Center" FontWeight="Bold"/>
+        <DataGrid Name="dgLibrarySongs" Background="LightGray"  BorderBrush="DarkGray" BorderThickness="3" AutoGenerateColumns="False" SelectionMode="Extended" ItemsSource="{Binding }" Grid.Row="3" Grid.Column="1" Margin="0 5 10 10" Width="auto" MaxWidth="1300">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" IsReadOnly="True"  Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Artist" IsReadOnly="True"  Binding="{Binding Artist}"/>
+                <DataGridTextColumn Header="Album" IsReadOnly="True"  Binding="{Binding Album}"/>
+                <DataGridTextColumn Header="Genre" IsReadOnly="True"  Binding="{Binding Genre}"/>
+                <DataGridTextColumn Header="Filename" IsReadOnly="True"  Binding="{Binding Filename}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
+
